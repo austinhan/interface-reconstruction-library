@@ -50,8 +50,10 @@ void c_PlanarSep_getPlane(c_PlanarSep* a_self, const int* a_index,
 
 bool c_PlanarSep_isFlipped(const c_PlanarSep* a_self);
 
+void c_PlanarSep_setFlip(const c_PlanarSep* a_self, const double* a_flip_value);
+
 void c_PlanarSep_printToScreen(const c_PlanarSep* a_self);
 
 }  // end extern C
 
-#endif // IRL_C_INTERFACE_PLANAR_RECONSTRUCTION_C_SEPARATORS_H_
+#endif  // IRL_C_INTERFACE_PLANAR_RECONSTRUCTION_C_SEPARATORS_H_

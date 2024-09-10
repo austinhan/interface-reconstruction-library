@@ -57,6 +57,9 @@ module f_PlanarSep_class
   interface isFlipped
     module procedure PlanarSep_class_isFlipped
   end interface
+  interface setFlip
+    module procedure PlanarSep_class_setFlip
+  end interface
   interface printToScreen
     module procedure PlanarSep_class_printToScreen
   end interface
@@ -146,6 +149,14 @@ module f_PlanarSep_class
       logical(C_BOOL) :: a_flipped
     end function F_PlanarSep_isFlipped
 
+    subroutine F_PlanarSep_setFlip(this, a_flip_value) &
+      bind(C, name="c_PlanarSep_setFlip")
+      import
+      implicit none
+      type(c_PlanarSep) :: this
+      real(C_DOUBLE), intent(in) :: a_flip_value ! scalar
+    end subroutine F_PlanarSep_setFlip
+
     subroutine F_PlanarSep_printToScreen(this) &
       bind(C, name="c_PlanarSep_printToScreen")
       import
@@ -230,6 +241,13 @@ module f_PlanarSep_class
       a_flipped = F_PlanarSep_isFlipped(this%c_object)
       return
     end function PlanarSep_class_isFlipped
+
+    subroutine PlanarSep_class_setFlip(this, a_flip_value)
+      implicit none
+      type(PlanarSep_type), intent(in) :: this
+      real(IRL_double) :: a_flip_value
+      call F_PlanarSep_setFlip(this%c_object, a_flip_value)
+    end subroutine PlanarSep_class_setFlip
 
     subroutine PlanarSep_class_printToScreen(this)
       implicit none

@@ -108,6 +108,12 @@ bool c_PlanarSep_isFlipped(const c_PlanarSep* a_self) {
   return a_self->obj_ptr->isFlipped();
 }
 
+void c_PlanarSep_setFlip(const c_PlanarSep* a_self,
+                         const double* a_flip_value) {
+  assert(a_self != nullptr);
+  a_self->obj_ptr->setFlip(*a_flip_value);
+}
+
 void c_PlanarSep_printToScreen(const c_PlanarSep* a_self) {
   assert(a_self != nullptr);
   assert(a_self->obj_ptr != nullptr);
